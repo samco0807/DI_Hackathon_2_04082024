@@ -1,10 +1,7 @@
 const knex = require("knex");
+require("dotenv").config();
 
-const PGHOST = "ep-winter-shape-a2rbuxds.eu-central-1.aws.neon.tech"; // localhost 127.0.0.1
-const PGDATABASE = "neondb"; // dvdrental postgres
-const PGUSER = "neondb_owner"; // postgres
-const PGPASSWORD = "RiC1Xg4vELMZ";
-const PGPORT = 5432;
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT } = process.env;
 
 const db = knex({
   client: "pg",
@@ -27,4 +24,6 @@ async function getVersion() {
   }
 }
 
-getVersion()
+// getVersion();
+
+module.exports = { db };
