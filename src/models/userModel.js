@@ -10,14 +10,13 @@ const _getUserById = () => {
 
 const _createUser = (
   userId,
-  username,
+  firstname,
+  lastname,
   email,
   password_hash,
-  createdAt,
-  updatedAt
 ) => {
   return db("users").insert(
-    { userId, username, email, password_hash, createdAt, updatedAt },
+    { userId, firstname, lastname, email, password_hash},
     ["id", "username", "email", "password", "created_at", "updated_at"]
   );
 };

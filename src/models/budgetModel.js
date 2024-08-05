@@ -1,11 +1,29 @@
 const { db } = require("../config/dbpg.js");
 
 const _getAllBudgets = () => {
-  return db("budget").select("id", "name", "limit", "category").orderBy("date");
+  return db("budget")
+    .select(
+      "id",
+      "name",
+      "start_date",
+      "end_date",
+      "budget_amount",
+      "category",
+      "notes"
+    )
+    .orderBy("date");
 };
 const _getBudgetById = () => {
   return db("budget")
-    .select("id", "name", "limit", "category")
+    .select(
+      "id",
+      "name",
+      "start_date",
+      "end_date",
+      "budget_amount",
+      "category",
+      "notes"
+    )
     .where({ id: budget.id });
 };
 
@@ -13,8 +31,11 @@ const _createBudget = (budgetId, name, limit, category) => {
   return db("budget").insert({ budgetId, name, limit, category }, [
     "id",
     "name",
-    "limit",
+    "start_date",
+    "end_date",
+    "budget_amount",
     "category",
+    "notes",
   ]);
 };
 

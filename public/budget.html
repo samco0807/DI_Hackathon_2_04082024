@@ -12,9 +12,10 @@
     />
   </head>
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Your Budget</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,13 +35,15 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Budget.html">Budget</a>
+              <a class="nav-link active" href="Budget.html">Budgets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Transactions.html">Transactions</a>
+              <a class="nav-link active" href="Transactions.html"
+                >Transactions</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Reports.html">Reports</a>
+              <a class="nav-link active" href="Reports.html">Reports</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -53,13 +56,24 @@
                 Settings
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Contact</a></li>
-                <li><a class="dropdown-item" href="#">Q&A</a></li>
-                <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href=".html">Profile information</a>
                 </li>
+                <li><a class="dropdown-item" href="#">Change password</a></li>
+                <li><a class="dropdown-item" href="#">Notifications settings</a></li>
+                <li><a class="dropdown-item" href="#">Account deletion</a></li>
+                <li><hr class="dropdown-divider" /></li>
               </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="createuseraccount.html"
+                >Create Account</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="signin.html">Sign In</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -77,90 +91,50 @@
       </div>
     </nav>
 
+    <!-- MAIN -->
     <main class="text-center">
-      <section>
-        <h1>Budgets creation form</h1>
-        <h2>Budget details page</h2>
-        <form action="/budget" method="post">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Budget Name</span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Ex: Holidays"
-              aria-label=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
+      <div class="container mt-5">
+        <h2>Budget List</h2>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text">Start date</span>
-            <input
-              type="date"
-              class="form-control"
-              aria-label="Amount (to the nearest dollar)"
-            />
-            <span class="input-group-text"></span>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">End date</span>
-            <input
-              type="date"
-              class="form-control"
-              aria-label="Amount (to the nearest dollar)"
-            />
-            <span class="input-group-text"></span>
-          </div>
+        <a href="createbudget.html" class="btn btn-primary">Create Budget</a>
 
-          <h2>Financial goal</h2>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text">Budget amount</span>
-            <input
-              type="number"
-              class="form-control"
-              aria-label="Amount (to the nearest dollar)"
-            />
-            <span class="input-group-text"></span>
-          </div>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Amount (to the nearest dollar)"
-            />
-            <span class="input-group-text">.00</span>
-          </div>
-
-          <select class="form-select" aria-label="Default select example">
-            <option selected>- Choose a category -</option>
-            <option value="Housing">Housing</option>
-            <option value="Food">Food</option>
-            <option value="Transportation">Transportation</option>
-          </select>
-          <div class="input-group mb-3">
-            <span class="input-group-text">Maximum autorized</span>
-            <input
-              type="number"
-              class="form-control"
-              aria-label="Amount (to the nearest dollar)"
-            />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">Notes</span>
-            <textarea
-              class="form-control"
-              aria-label="With textarea"
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Create Budget</button>
-        </form>
-        <h3>List of existing budgets</h3>
-      </section>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Maximum Authorized</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Budget 1</td>
+              <td>2024-08-01</td>
+              <td>2024-08-31</td>
+              <td>1000</td>
+              <td>Food</td>
+              <td>1200</td>
+              <td>Notes for budget 1</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm">
+                  Edit
+                </button>
+                <button type="button" class="btn btn-danger btn-sm">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer mt-auto py-3 bg">
       <div class="container text-center">
         <p>© Hachathon 08.08.2024</p>

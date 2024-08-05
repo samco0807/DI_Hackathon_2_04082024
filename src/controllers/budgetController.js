@@ -1,4 +1,10 @@
-const { _getAllBudgets, _getBudgetById, _createBudget, _editBudget, _deleteBudget } = require("../models/budgetModel.js");
+const {
+  _getAllBudgets,
+  _getBudgetById,
+  _createBudget,
+  _editBudget,
+  _deleteBudget,
+} = require("../models/budgetModel.js");
 
 const getAllBudgets = async (req, res) => {
   try {
@@ -9,6 +15,7 @@ const getAllBudgets = async (req, res) => {
     res.status(404).json({ message: "something went wrong" });
   }
 };
+
 const getBudgetById = async (req, res) => {
   try {
     const result = await _getBudgetById();
@@ -20,9 +27,16 @@ const getBudgetById = async (req, res) => {
 };
 
 const createBudget = async (req, res) => {
-  const { name, limit, category } = req.body;
+  const { name, start_date, end_date, amount, category, notes } = req.body;
   try {
-    const result = await _createBudget(name, limit, category);
+    const result = await _createBudget(
+      name,
+      start_date,
+      end_date,
+      amount,
+      category,
+      notes
+    );
     res.json(result);
     _getAllBudgets(req, res);
   } catch (error) {
@@ -40,11 +54,12 @@ const editBudget = async (req, res) => {
     console.log(error);
     res.status(404).json({ message: "something went wrong" });
   }
+  
 };
 const deleteBudget = async (req, res) => {
   const { id } = req.body;
   try {
-    const result = await _deleteTransaction(id);
+    const result = await _deleteBudget(id);
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -52,12 +67,10 @@ const deleteBudget = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
-    getAllBudgets,
-    getBudgetById,
-    createBudget,
-    editBudget,
-    deleteBudget
+  getAllBudgets,
+  getBudgetById,
+  createBudget,
+  editBudget,
+  deleteBudget,
 };

@@ -12,9 +12,10 @@
     />
   </head>
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Your Budget</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,13 +35,15 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Budget.html">Budget</a>
+              <a class="nav-link active" href="Budget.html">Budgets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Transactions.html">Transactions</a>
+              <a class="nav-link active" href="Transactions.html"
+                >Transactions</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Reports.html">Reports</a>
+              <a class="nav-link active" href="Reports.html">Reports</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -53,17 +56,29 @@
                 Settings
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Contact</a></li>
-                <li><a class="dropdown-item" href="#">Q&A</a></li>
-                <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href=".html">Profile information</a>
                 </li>
+                <li><a class="dropdown-item" href="#">Change password</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Notifications settings</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Account deletion</a></li>
+                <li><hr class="dropdown-divider" /></li>
               </ul>
             </li>
           </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="createuseraccount.html"
+                >Create Account</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="signin.html">Sign In</a>
+            </li>
+          </ul>
           <form class="d-flex" role="search">
-            
             <input
               class="form-control me-2"
               type="search"
@@ -78,17 +93,22 @@
       </div>
     </nav>
 
+    <!-- MAIN -->
     <main class="text-center">
-
       <section>
         <h1>Budgets creation form</h1>
         <form action="/budget" method="post">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Budget Name</span>
-            <input type="text" class="form-control" placeholder="Ex: Holidays" aria-label="Username" aria-describedby="basic-addon1">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ex: Holidays"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
           </div>
-          
-          </div>
+
           <div class="input-group mb-3">
             <span class="input-group-text">Budget limit</span>
             <input
@@ -116,12 +136,11 @@
             />
             <span class="input-group-text"></span>
           </div>
-          
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
-            </div>
+
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
           </div>
-          
+
           <div class="mb-3 form-check">
             <input
               type="checkbox"
@@ -199,6 +218,7 @@
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer mt-auto py-3 bg">
       <div class="container text-center">
         <p>© Hachathon 08.08.2024</p>

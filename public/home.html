@@ -12,10 +12,10 @@
     />
   </head>
   <body>
-    <!-- NARBAR -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">App</a>
+        <a class="navbar-brand" href="#">Your Budget</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -35,13 +35,15 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Budget.html">Budget</a>
+              <a class="nav-link active" href="Budget.html">Budgets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Transactions.html">Transactions</a>
+              <a class="nav-link active" href="Transactions.html"
+                >Transactions</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Reports.html">Reports</a>
+              <a class="nav-link active" href="Reports.html">Reports</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -54,10 +56,24 @@
                 Settings
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Contact</a></li>
-                <li><a class="dropdown-item" href="#">Q&A</a></li>
+                <li>
+                  <a class="dropdown-item" href=".html">Profile information</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Change password</a></li>
+                <li><a class="dropdown-item" href="#">Notifications settings</a></li>
+                <li><a class="dropdown-item" href="#">Account deletion</a></li>
                 <li><hr class="dropdown-divider" /></li>
               </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="createuseraccount.html"
+                >Create Account</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="signin.html">Sign In</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -79,13 +95,21 @@
     <main class="text-center">
       <section>
         <h1>Dashboard</h1>
-        <h3>
-          Our budget app helps you take control of your finances by tracking
-          your income and expenses, setting budgets, and achieving your
-          financial goals.
-        </h3>
-        
-      
+
+        <div class="container mt-5">
+          <h3>
+            Our budget app helps you take control of your finances by tracking
+            your income and expenses, setting budgets, and achieving your
+            financial goals.
+          </h3>
+          <div class="container mt-5">
+            <a class="btn btn-primary" href="createtransaction.html" role="button"
+              >New transaction</a
+            >
+            <button class="btn btn-primary" type="submit">Budget status</button>
+  
+          </div>
+        </div>
         <div class="container mt-5">
           <div class="row">
             <div class="col-md-4">
@@ -125,16 +149,6 @@
             </div>
           </div>
         </div>
-
-        <div>
-          <h3>savings progress</h3>
-        </div>
-
-        <a class="btn btn-primary" href="#" role="button">New transaction</a>
-        <button class="btn btn-primary" type="submit">Budget status</button>
-        <input class="btn btn-primary" type="button" value="Report" />
-        <input class="btn btn-primary" type="submit" value="Submit" />
-        <input class="btn btn-primary" type="reset" value="Reset" />
       </section>
     </main>
 

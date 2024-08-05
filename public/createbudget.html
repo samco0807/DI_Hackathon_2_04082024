@@ -92,116 +92,79 @@
     </nav>
 
     <!-- MAIN -->
-    <main>
-      <div class="container mt-5">
-        <h2>Budget Report</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <h3>Income Summary</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Source</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Salary</td>
-                  <td>$3000</td>
-                </tr>
-                <tr>
-                  <td>Freelance</td>
-                  <td>$500</td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td>$3500</td>
-                </tr>
-              </tbody>
-            </table>
+    <main class="text-center">
+      <section>
+        <h1>Budget creation form</h1>
+
+        <form action="/budget" method="post">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Budget Name</span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ex: Holidays"
+              aria-label=""
+              aria-describedby="basic-addon1"
+              id="budgetName"
+            />
           </div>
-          <div class="col-md-6">
-            <h3>Expense Summary</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Housing</td>
-                  <td>$1000</td>
-                </tr>
-                <tr>
-                  <td>Food</td>
-                  <td>$500</td>
-                </tr>
-                <tr>
-                  <td>Transportation</td>
-                  <td>$300</td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td>$1800</td>
-                </tr>
-              </tbody>
-            </table>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">Start date</span>
+            <input
+              type="date"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+              id="startDate"
+            />
+            <span class="input-group-text"></span>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h3>Budget vs Actual</h3>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Budget</th>
-                  <th>Actual</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Housing</td>
-                  <td>$1200</td>
-                  <td>$1000</td>
-                </tr>
-                <tr>
-                  <td>Food</td>
-                  <td>$600</td>
-                  <td>$500</td>
-                </tr>
-                <tr>
-                  <td>Transportation</td>
-                  <td>$400</td>
-                  <td>$300</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="input-group mb-3">
+            <span class="input-group-text">End date</span>
+            <input
+              type="date"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+              id="endDate"
+            />
+            <span class="input-group-text"></span>
           </div>
-          <div class="col-md-6">
-            <h3>Savings Progress</h3>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width: 60%"
-                aria-valuenow="60"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                60%
-              </div>
-               
-            </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">Budget amount</span>
+            <input
+              type="number"
+              id="amount"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+            />
+            <span class="input-group-text"></span>
           </div>
-        </div>
-      </div>
+
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            id="category"
+          >
+            <option selected>- Choose a category -</option>
+            <option value="Housing">Housing</option>
+            <option value="Food">Food</option>
+            <option value="Transportation">Transportation</option>
+          </select>
+
+          <div class="input-group">
+            <span class="input-group-text">Notes</span>
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              id="notes"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer mt-auto py-3 bg">
       <div class="container text-center">
         <p>© Hachathon 08.08.2024</p>
@@ -220,6 +183,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="reports.js"></script>
+    <script src="createbudget.js"></script>
   </body>
 </html>

@@ -11,10 +11,12 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">App</a>
+        <a class="navbar-brand" href="#">Your Budget</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,13 +36,15 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Budget.html">Budget</a>
+              <a class="nav-link active" href="Budget.html">Budgets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Transactions.html">Transactions</a>
+              <a class="nav-link active" href="Transactions.html"
+                >Transactions</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Reports.html">Reports</a>
+              <a class="nav-link active" href="Reports.html">Reports</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -53,13 +57,25 @@
                 Settings
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Contact</a></li>
+                <li>
+                  <a class="dropdown-item" href="contact.html">Contact</a>
+                </li>
                 <li><a class="dropdown-item" href="#">Q&A</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </li>
               </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="createuseraccount.html"
+                >Create Account</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="signin.html">Sign In</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -77,24 +93,73 @@
       </div>
     </nav>
 
+    <!-- MAIN -->
     <main class="text-center">
-      <section>
-        <h1>Create customer</h1>
-        <form action="/user" method="post">
-          <label for="name">Username</label>
-          <input type="text" placeholder="Username" />
-          <button type="button">Send</button>
-        </form>
-      </section>
+      <h2>Create your user account</h2>
+      <form action="/users" method="post" id="newUserAccount">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="Enter your first name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Enter your last name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Enter a username"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            placeholder="Choose a password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer mt-auto py-3 bg">
       <div class="container text-center">
         <p>© Hachathon 08.08.2024</p>
         <ul class="list-inline">
           <li class="list-inline-item"><a href="#">Privacy policy</a></li>
-          <li class="list-inline-item"><a href="#">Terms of service</a></li>
-          <li class="list-inline-item"><a href="#">Contact information</a></li>
+          <li class="list-inline-item">
+            <a href="#">Terms of service</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Contact information</a>
+          </li>
           <li class="list-inline-item"><a href="#">About us</a></li>
           <li class="list-inline-item"><a href="#">Help center</a></li>
         </ul>
@@ -106,5 +171,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="createuseraccount.js"></script>
   </body>
 </html>

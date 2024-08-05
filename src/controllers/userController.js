@@ -35,7 +35,7 @@ const getUserById = async (req, res) => {
 
 // Create new user
 const createUser = async (req, res) => {
-  const { name, email } = req.body;
+  const { username, email } = req.body;
   try {
     const result = await _createUser(username, email);
     // res.json(result);
