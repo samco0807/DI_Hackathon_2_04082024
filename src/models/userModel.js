@@ -1,18 +1,36 @@
 const { db } = require("../config/dbpg.js");
 
 const _getAllUsers = () => {
-  return db("users").select("id", "username", "email").orderBy("username");
+  return db("users")
+    .select(
+      "id",
+      "username",
+      "email",
+      "password_hash",
+      "first_name",
+      "last_name",
+      "phone_number"
+    )
+    .orderBy("username");
 };
 
 const _getUserById = (userid) => {
-  return db("users").select("id", "username", "email").where({ id: userid });
+  return db("users")
+    .select(
+      "id",
+      "username",
+      "email",
+      "password_hash",
+      "first_name",
+      "last_name",
+      "phone_number"
+    )
+    .where({ id: userid });
 };
 
-const _createUser = (username, email, password_hash) => {
-  return db("users").insert({ username, email, password_hash }, [
-    "username",
-    "email",
-    "password_hash",
+const _createUser = (username, email, password_hash, first_name, last_name, phone_number) => {
+  return db("users").insert({ username, email, password_hash, first_name, last_name, phone_number }, [
+    "id"
   ]);
 };
 
