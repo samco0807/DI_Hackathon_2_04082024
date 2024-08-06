@@ -11,8 +11,8 @@ const {
 
 router.get("/transaction", getAllTransactions);
 router.get("/transaction/:id", getTransactionById);
-router.get("/transaction", createTransaction);
-router.get("/transaction/:id", editTransaction);
-router.get("/transaction/:id", deleteTransaction);
+router.post("/transaction", createTransaction);
+router.put("/transaction/:id", editTransaction);
+router.delete("/transaction/:id", deleteTransaction);
 
 module.exports = router;

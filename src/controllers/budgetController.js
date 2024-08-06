@@ -12,7 +12,7 @@ const getAllBudgets = async (req, res) => {
     res.json(result);
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "something went wrong" });
+    res.status(404).json({ message: "Cannot retrieve all Budgets" });
   }
 };
 
@@ -21,7 +21,7 @@ const getBudgetById = async (req, res) => {
     const budgetId = req.params.id;
     const budget = await _getBudgetById(budgetId);
     if (budget.length === 0) {
-      return res.status(404).json({ error: "Budget not found" });
+      return res.status(404).json({ error: "Can not retrieve the request budget" });
     }
     res.json(budget);
   } catch (error) {
@@ -31,24 +31,24 @@ const getBudgetById = async (req, res) => {
 };
 
 const createBudget = async (req, res) => {
-  const { name, start_date, end_date, amount, category, notes } = req.body;
+  const { name, amount, category } = req.params;
   try {
     const result = await _createBudget(name, amount, category);
     res.json(result);
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "something went wrong" });
+    res.status(404).json({ message: "Budget cannot be created" });
   }
 };
 
 const editBudget = async (req, res) => {
-  const { name, limit, category } = req.body;
+  const { name, limit, category } = req.params;
   try {
     const result = await _editBudget(name, limit, category);
     res.json(result);
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "something went wrong" });
+    res.status(404).json({ message: "Budget cannot be edited" });
   }
 };
 const deleteBudget = async (req, res) => {
@@ -58,7 +58,7 @@ const deleteBudget = async (req, res) => {
     res.json(result);
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "something went wrong" });
+    res.status(404).json({ message: "Budget cannot be deleted" });
   }
 };
 

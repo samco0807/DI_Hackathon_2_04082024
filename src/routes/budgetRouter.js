@@ -10,8 +10,8 @@ const {
 
 router.get("/budget", getAllBudgets);
 router.get("/budget/:id", getBudgetById);
-router.get("/budget", createBudget);
-router.get("/budget/:id", editBudget);
-router.get("/budget/:id", deleteBudget);
+router.post("/budget", createBudget);
+router.put("/budget/:id", editBudget);
+router.delete("/budget/:id", deleteBudget);
 
 module.exports = router;

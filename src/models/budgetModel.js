@@ -3,8 +3,9 @@ const { db } = require("../config/dbpg.js");
 const _getAllBudgets = () => {
   return db("budget")
     .select("id", "name", "budget_limit", "category")
-    .orderBy("date");
+    // .orderBy("budget_limit");
 };
+
 const _getBudgetById = (budgetid) => {
   return db("budget")
     .select("id", "name", "budget_limit", "category")
