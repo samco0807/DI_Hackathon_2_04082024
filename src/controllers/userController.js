@@ -19,12 +19,11 @@ const getAllUsers = async (req, res) => {
 
 // Get user by ID
 const getUserById = async (req, res) => {
-  const result = await _getUserById();
   try {
     const userId = req.params.id;
-    const userIndex = users.find((item) => item.id == userId);
-    if (!userIndex) {
-      return res.status(404).json({ error: "Task not found" });
+    const user = await _getUserById(userId);
+    if (user.length===0) {
+      return res.status(404).json({ error: "User not found" });
     }
     res.json(user);
   } catch (error) {

@@ -2,25 +2,26 @@ const { db } = require("../config/dbpg.js");
 
 const _getAllTransactions = () => {
   return db("transactions")
-    .select("id", "description", "category", "type", "date")
+    .select("id", "amount", "description", "category", "transaction_type", "date")
     .orderBy("date");
 };
-const _getTransactionById = () => {
+const _getTransactionById = (transactionid) => {
   return db("transactions")
-    .select("id", "description", "category", "type", "date")
-    .where({ id: transactions.id });
+    .select("id","amount", "description", "category", "transaction_type", "date")
+    .where({ id: transactionid });
 };
 
 const _createTransaction = (
-  transactionId,
+  userId,
+  budgetId,
+  amount,
   description,
   category,
-  type,
-  date
+  transactionType
 ) => {
   return db("transactions").insert(
-    { transactionId, description, category, type, date },
-    ["id", "description", "category", "type", "date"]
+    { userId, budgetId, amount, description, category, transactionType },
+    ["id"]
   );
 };
 
@@ -28,7 +29,7 @@ const _editTransaction = (id, updatedTransaction) => {
   return db("transactions").where("id", id).update(updatedTransaction);
 };
 const _deleteTransaction = (id) => {
-  return db("transactions").where("id", id).del({id});
+  return db("transactions").where("id", id).del({ id });
 };
 
 module.exports = {

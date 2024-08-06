@@ -4,21 +4,16 @@ const _getAllUsers = () => {
   return db("users").select("id", "username", "email").orderBy("username");
 };
 
-const _getUserById = () => { 
-  return db("users").select("id", "username", "email").where({"id":user.id});
- }
+const _getUserById = (userid) => {
+  return db("users").select("id", "username", "email").where({ id: userid });
+};
 
-const _createUser = (
-  userId,
-  firstname,
-  lastname,
-  email,
-  password_hash,
-) => {
-  return db("users").insert(
-    { userId, firstname, lastname, email, password_hash},
-    ["id", "username", "email", "password", "created_at", "updated_at"]
-  );
+const _createUser = (username, email, password_hash) => {
+  return db("users").insert({ username, email, password_hash }, [
+    "username",
+    "email",
+    "password_hash",
+  ]);
 };
 
 const _editUser = (id, updatedUser) => {
@@ -26,7 +21,7 @@ const _editUser = (id, updatedUser) => {
 };
 
 const _deleteUser = (id) => {
-  return db("users").where("id", id).del({id});
+  return db("users").where("id", id).del({ id });
 };
 
 module.exports = {

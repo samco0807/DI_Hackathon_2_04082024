@@ -13,7 +13,7 @@ const _getAllBudgets = () => {
     )
     .orderBy("date");
 };
-const _getBudgetById = () => {
+const _getBudgetById = (budgetid) => {
   return db("budget")
     .select(
       "id",
@@ -24,7 +24,7 @@ const _getBudgetById = () => {
       "category",
       "notes"
     )
-    .where({ id: budget.id });
+    .where({ "id": budgetid });
 };
 
 const _createBudget = (budgetId, name, limit, category) => {

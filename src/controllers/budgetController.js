@@ -1,3 +1,5 @@
+const {db} = require('../config/dbpg.js');
+
 const {
   _getAllBudgets,
   _getBudgetById,
@@ -8,8 +10,12 @@ const {
 
 const getAllBudgets = async (req, res) => {
   try {
-    const result = await _getAllBudgets();
-    res.json(result);
+    const budgetId = req.params.id;
+    const budget = await _getBudgetById(budgetId);
+    if (budget.length === 0) {
+      return res.status(404).json({ error: "Transaction not found" });
+    }
+    res.json(user);
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "something went wrong" });

@@ -9,9 +9,9 @@ const {
 } = require("../controllers/budgetController.js");
 
 router.get("/budget", getAllBudgets);
-router.get("/:budget:id", getBudgetById);
+router.get("/budget/:id", getBudgetById);
 router.get("/budget", createBudget);
-router.get("/budget:id", editBudget);
-router.get("/budget:id", deleteBudget);
+router.get("/budget/:id", editBudget);
+router.get("/budget/:id", deleteBudget);
 
 module.exports = router;
