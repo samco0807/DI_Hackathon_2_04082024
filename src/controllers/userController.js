@@ -23,7 +23,9 @@ const getUserById = async (req, res) => {
     const userId = req.params.id;
     const user = await _getUserById(userId);
     if (user.length === 0) {
-      return res.status(404).json({ error: "Cannot retrieve this specific user" });
+      return res
+        .status(404)
+        .json({ error: "Cannot retrieve this specific user" });
     }
     res.json(user);
   } catch (error) {
@@ -34,10 +36,24 @@ const getUserById = async (req, res) => {
 
 // Create new user
 const createUser = async (req, res) => {
-  const { username, email } = req.body;
+  const {
+    username,
+    email,
+    password_hash,
+    first_name,
+    last_name,
+    phone_number,
+  } = req.body;
   try {
-    const result = await _createUser(username, email);
-    // res.json(result);
+    const result = await _createUser(
+      username,
+      email,
+      password_hash,
+      first_name,
+      last_name,
+      phone_number
+    );
+    res.json(result);
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Cannot create the user" });
@@ -58,10 +74,12 @@ const editUser = async (req, res) => {
 
 // delete a user
 const deleteUser = async (req, res) => {
-  const { name, email } = req.params.id;
   try {
-    const result = await _deleteUser(name, email);
-    res.json(result);
+    const { id } = req.params;
+    const deleteUser = await _deleteUser(id);
+    // res.json(deleteBudget);
+    res.status(200).json({ message: 'User deleted successfully', deleteUser });
+
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "something went wrong" });

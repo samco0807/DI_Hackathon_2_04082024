@@ -31,9 +31,9 @@ const getBudgetById = async (req, res) => {
 };
 
 const createBudget = async (req, res) => {
-  const { name, amount, category } = req.params;
   try {
-    const result = await _createBudget(name, amount, category);
+    const { user_id, name, amount, category } = req.body;
+    const result = await _createBudget(user_id, name, amount, category);
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -42,8 +42,8 @@ const createBudget = async (req, res) => {
 };
 
 const editBudget = async (req, res) => {
-  const { name, limit, category } = req.params;
   try {
+    const { name, limit, category } = req.body;
     const result = await _editBudget(name, limit, category);
     res.json(result);
   } catch (error) {
@@ -51,11 +51,13 @@ const editBudget = async (req, res) => {
     res.status(404).json({ message: "Budget cannot be edited" });
   }
 };
+
 const deleteBudget = async (req, res) => {
-  const { id } = req.body;
   try {
-    const result = await _deleteBudget(id);
-    res.json(result);
+    const { id } = req.params;
+    const deleteBudget = await _deleteBudget(id);
+    // res.json(deleteBudget);
+    res.status(200).json({ message: 'Budget deleted successfully', deleteBudget });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Budget cannot be deleted" });

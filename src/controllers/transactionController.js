@@ -34,11 +34,11 @@ const getTransactionById = async (req, res) => {
 
 // Create a transaction
 const createTransaction = async (req, res) => {
-  const { userId, budgetId, amount, description, category, transactionType } = req.body;
   try {
+    const { userId, budgetId, amount, description, category, transactionType } = req.body;
     const newTransaction = await _createTransaction(userId, budgetId, amount, description, category, transactionType);
-    res.status(201).json({ message: 'Transaction created successfully', transaction: newTransaction });
-    res.json(newTransaction);
+    res.status(201).json({ message: 'Transaction created successfully', newTransaction });
+
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Something went wrong" });
@@ -47,8 +47,8 @@ const createTransaction = async (req, res) => {
 
 // Edit a transaction
 const editTransaction = async (req, res) => {
-  const { name, category, amount, date } = req.body;
   try {
+    const { name, category, amount, date } = req.body;
     const result = await _editTransaction(name, category, amount, date);
     res.json(result);
   } catch (error) {
@@ -59,10 +59,13 @@ const editTransaction = async (req, res) => {
 
 // Delete a transaction
 const deleteTransaction = async (req, res) => {
-  const { name, email } = req.body;
+  const { id } = req.body;
   try {
-    const result = await _deleteTransaction(name, email);
-    res.json(result);
+    
+    // res.json(result);
+    const deleteTransaction = await _deleteTransaction(id);
+    // res.json(deleteBudget);
+    res.status(200).json({ message: 'Transaction deleted successfully', deleteTransaction });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Something went wrong" });
