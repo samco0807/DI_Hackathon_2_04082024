@@ -36,14 +36,15 @@ const _createTransaction = (
   return db("transactions").insert(
     { user_id, budget_id, amount, description, category, transaction_type },
     ["id"]
-  );
+  ).returning("*");
 };
 
 const _editTransaction = (id, updatedTransaction) => {
   return db("transactions").where("id", id).update(updatedTransaction);
 };
+
 const _deleteTransaction = (id) => {
-  return db("transactions").where("id", id).del();
+  return db("transactions").where("id", id).del().returning("*");
 };
 
 module.exports = {

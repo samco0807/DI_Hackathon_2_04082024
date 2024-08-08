@@ -45,7 +45,7 @@ const editBudget = async (req, res) => {
   try {
     const { name, limit, category } = req.body;
     const result = await _editBudget(name, limit, category);
-    res.json(result);
+    res.status(200).json({ message: "Budget edited successfully", result });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Budget cannot be edited" });

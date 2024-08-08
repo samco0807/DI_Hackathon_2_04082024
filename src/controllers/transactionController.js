@@ -25,7 +25,9 @@ const getTransactionById = async (req, res) => {
     if (transaction.length === 0) {
       return res.status(404).json({ error: "Transaction not found" });
     }
-    res.json(user);
+    res
+      .status(200)
+      .json({ message: "Transaction got successfully", transaction });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Something went wrong" });
@@ -45,13 +47,12 @@ const createTransaction = async (req, res) => {
       category,
       transactionType
     );
-    res.json(newTransaction)
     res
-      .status(201)
+      .status(200)
       .json({ message: "Transaction created successfully", newTransaction });
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "Something went wrong" });
+    res.status(404).json({ message: "Fail to create transaction" });
   }
 };
 
@@ -60,7 +61,7 @@ const editTransaction = async (req, res) => {
   try {
     const { name, category, amount, date } = req.body;
     const result = await _editTransaction(name, category, amount, date);
-    res.json(result);
+    res.status(200).json({ message: "Transaction edited successfully", result });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Something went wrong" });
