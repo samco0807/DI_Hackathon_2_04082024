@@ -27,7 +27,7 @@ const getUserById = async (req, res) => {
         .status(404)
         .json({ error: "Cannot retrieve this specific user" });
     }
-    res.json(user);
+    res.status(200).json({ message: "User got successfully", user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
@@ -53,7 +53,7 @@ const createUser = async (req, res) => {
       last_name,
       phone_number
     );
-    res.json(result);
+    res.status(200).json({ message: "User created successfully", result });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Cannot create the user" });
@@ -62,10 +62,26 @@ const createUser = async (req, res) => {
 
 // Edit a user
 const editUser = async (req, res) => {
-  const { name, email } = req.params.id;
+  const {
+    id,
+    username,
+    email,
+    password_hash,
+    first_name,
+    last_name,
+    phone_number,
+  } = req.body;
   try {
-    const result = await _editUser(name, email);
-    res.json(result);
+    const result = await _editUser(id, {
+      id,
+      username,
+      email,
+      password_hash,
+      first_name,
+      last_name,
+      phone_number,
+    });
+    res.status(200).json({ message: "User edited successfully", result });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Cannot edit the user" });

@@ -13,7 +13,7 @@ const getAllTransactions = async (req, res) => {
     res.json(result);
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "Something went wrong" });
+    res.status(404).json({ message: "Fail to get all transactions" });
   }
 };
 
@@ -34,11 +34,21 @@ const getTransactionById = async (req, res) => {
 
 // Create a transaction
 const createTransaction = async (req, res) => {
+  const { userId, budgetId, amount, description, category, transactionType } =
+    req.body;
   try {
-    const { userId, budgetId, amount, description, category, transactionType } = req.body;
-    const newTransaction = await _createTransaction(userId, budgetId, amount, description, category, transactionType);
-    res.status(201).json({ message: 'Transaction created successfully', newTransaction });
-
+    const newTransaction = await _createTransaction(
+      userId,
+      budgetId,
+      amount,
+      description,
+      category,
+      transactionType
+    );
+    res.json(newTransaction)
+    res
+      .status(201)
+      .json({ message: "Transaction created successfully", newTransaction });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Something went wrong" });
@@ -61,11 +71,12 @@ const editTransaction = async (req, res) => {
 const deleteTransaction = async (req, res) => {
   const { id } = req.body;
   try {
-    
     // res.json(result);
     const deleteTransaction = await _deleteTransaction(id);
     // res.json(deleteBudget);
-    res.status(200).json({ message: 'Transaction deleted successfully', deleteTransaction });
+    res
+      .status(200)
+      .json({ message: "Transaction deleted successfully", deleteTransaction });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "Something went wrong" });
