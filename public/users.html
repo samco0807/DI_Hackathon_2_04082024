@@ -57,14 +57,13 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href=".html">Profile information</a>
+                  <a class="dropdown-item" href="contact.html">Contact</a>
                 </li>
-                <li><a class="dropdown-item" href="#">Change password</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Notifications settings</a>
-                </li>
-                <li><a class="dropdown-item" href="#">Account deletion</a></li>
+                <li><a class="dropdown-item" href="#">Q&A</a></li>
                 <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -95,47 +94,14 @@
 
     <!-- MAIN -->
     <main class="text-center">
-      <div class="container mt-5">
-        <h2>Budget List</h2>
-
-        <a href="createbudget.html" class="btn btn-primary">Create Budget</a>
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Amount</th>
-              <th>Category</th>
-              <th>Maximum Authorized</th>
-              <th>Notes</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Budget 1</td>
-              <td>2024-08-01</td>
-              <td>2024-08-31</td>
-              <td>1000</td>
-              <td>Food</td>
-              <td>1200</td>
-              <td>Notes for budget 1</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm">
-                  Edit
-                </button>
-                <button type="button" class="btn btn-danger btn-sm">
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="root" onclick=" displayBudget()"></div>
+      <section>
+        <h1>Create customer</h1>
+        <form action="/user" method="post">
+          <label for="name">Username</label>
+          <input type="text" placeholder="Username" />
+          <button type="button">Send</button>
+        </form>
+      </section>
     </main>
 
     <!-- FOOTER -->
@@ -157,49 +123,5 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script>
-      const axios = require("axios");
-      const { response } = require("express");
-
-      // Make a request for a budget with a given ID
-      const displayAllBudgets = async () => {
-        const root = document.querySelector(".root");
-        try {
-          const response = await axios.get(
-            "http://localhost:3001/budget/budget"
-          );
-          const budget = response.data;
-          let tableRows = "";
-          budgets.forEach((budget) => {
-            tableRows += `
-                 <tr>
-                <td><span class="math-inline"> ${budget.name}</td\>
-                <td><span class="math-inline"> ${budget.amont}</td\>
-                <td><span class="math-inline"> ${budget.category}</td\>
-               <button type="button" class="btn btn-primary btn-sm">Edit</button>
-              <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                `;
-            root.innerHTML = `<table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Maximum Authorized</th>
-            <th>Notes</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>${tableRows}</tbody>
-      </table>`;
-          });
-        } catch (error) {
-          console.log("cannot retrive budget", error);
-        }
-      };
-      displayAllBudgets();
-    </script>
   </body>
 </html>

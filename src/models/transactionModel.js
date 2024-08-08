@@ -27,13 +27,14 @@ const _getTransactionById = (transactionid) => {
 
 const _createTransaction = (
   user_id,
+  budget_id,
   amount,
   description,
   category,
   transaction_type
 ) => {
   return db("transactions").insert(
-    { user_id, amount, description, category, transaction_type },
+    { user_id, budget_id, amount, description, category, transaction_type },
     ["id"]
   );
 };

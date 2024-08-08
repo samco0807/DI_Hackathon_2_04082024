@@ -78,8 +78,7 @@ const deleteUser = async (req, res) => {
     const { id } = req.params;
     const deleteUser = await _deleteUser(id);
     // res.json(deleteBudget);
-    res.status(200).json({ message: 'User deleted successfully', deleteUser });
-
+    res.status(200).json({ message: "User deleted successfully", deleteUser });
   } catch (error) {
     console.log(error);
     res.status(404).json({ message: "something went wrong" });

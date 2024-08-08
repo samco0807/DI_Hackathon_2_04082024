@@ -3,7 +3,6 @@ const cors = require("cors");
 const usersRouter = require("./src/routes/userRouter.js");
 const transactionsRouter = require("./src/routes/transactionRouter.js");
 const budgetRouter = require("./src/routes/budgetRouter.js");
-const bcrypt = require("bcrypt");
 
 const app = express();
 app.use(cors());
